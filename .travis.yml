@@ -1,0 +1,15 @@
+language: r
+cache: packages
+
+install:
+  - Rscript install.R
+
+script:
+  - Rscript forecast_update_model.R
+  
+ deploy:
+  provider: pages
+  skip_cleanup: true #won't delete all the work we did prior to deploying
+  github_token: $GITHUB_TOKEN  #Tells the code that we stored the token to access our repository as an environmental variable
+  keep_history: true
+  target_branch: master #where do we want to store this?
